@@ -1,0 +1,209 @@
+/* body {
+    background-image: url("../images/bg.png");
+    color:white;
+} */
+
+html, body { height: 100%; min-height: 100%; }
+ #main-wrapper { height:100%; }
+
+.well {
+	background-color: wheat;
+	color: black;
+}
+/* Remove the navbar's default margin-bottom and rounded borders */
+.navbar {
+	margin-bottom: 0;
+	border-radius: 0;
+	z-index:1000;
+}
+
+.container {
+	height: 100%;
+}
+
+/*  Set height of the grid so .sidenav can be 100% (adjust as needed)  */
+/* .row.content { */
+/* 	height: 1000px; */
+/* }  */
+
+/* Set gray background color and 100% height */
+.sidenav {
+	padding-top: 20px;
+	opacity: 0.7;
+	word-wrap: break-word; 
+}
+
+/* Set black background color, white text and some padding */
+footer {
+	
+	background-color: #555;
+	color: #FFF;
+	padding: 15px;
+	bottom: 0;
+	position:relative;
+	width: 100%;
+	margin-top: 20px;
+	
+}
+
+/* On small screens, set height to 'auto' for sidenav and grid */
+@media screen and (max-width: 767px) {
+	.sidenav {
+		height: 100%;;
+		padding: 15px;
+	}
+	.row.content {
+		height: inherit;
+	}
+}
+
+/* Inner navbar in Question Like & Dislike*/
+.sidenavinner {
+	margin-top: 2px;
+	min-height: 150px;
+	padding-top: 5%;
+}
+
+/*Pop-up model style*/
+#signup-page {
+	text-align: inherit;
+}
+
+#openid-buttons {
+	text-align: center;
+}
+
+.form-inline {
+	margin-top: 15px;
+	margin-bottom: 25px;
+}
+
+#signup-page, #login-page, #formCotainer {
+	padding: 30px;
+	border: 1px solid #e6e6e6;
+	width: :280 px;
+	background-color: #fff;
+}
+
+#add-login-page .or-container, #login-page .or-container, #signup-page .or-container
+	{
+	text-align: center;
+	margin: 20px 0px;
+	color: #808080;
+	font-variant: small-caps;
+}
+
+#add-login-page .or-hr, #login-page .or-hr, #signup-page .or-hr {
+	margin-bottom: -20px;
+	height: 0;
+	border: 0;
+	border-top: 1px solid #e6e6e6;
+}
+
+#or {
+	display: inline-block;
+	position: relative;
+	padding: 10px;
+	background-color: #fff;
+}
+/* Post Answers And Question style*/
+#questionBlock {
+	word-wrap:break-word;
+	
+}
+
+#questionView {
+	border: 1px solid #e6e6e6;
+	margin-top: 2px;
+	min-height: 150px;
+	height: 250px;
+	overflow:auto;
+	margin-top: 2px;
+	height: 250px;
+}
+
+#answersBlock {
+	word-wrap: break-word;
+	
+}
+
+#answersView {
+	min-height: 150px;
+	margin-top: 2px;
+	border: 1px solid #e6e6e6;
+	margin-top: 2px;
+}
+
+.thumbnail {
+	height: 150px;
+	overflow: hidden
+}
+
+#box {
+	overflow: hidden;
+	/*  text-overflow:ellipsis; */
+	height: 44px;
+	text-decoration: none;
+}
+
+#divider {
+	margin-top: 20px;
+	margin-bottom: 20px;
+	border: 0;
+	border-top: 3px solid #eee;
+}
+
+a.tagView {
+	color: white;
+	text-decoration: none;
+	font-style: oblique;
+}
+
+a.tagView:hover, a.tagView:focus {
+	color: black;
+}
+
+a:focus, a:hover {
+	color: #23527c;
+	text-decoration: none;
+}
+
+#tag {
+	color: #333;
+/* 	background-color: #3366cc; */
+	border-color: #ccc;
+}
+#UserQuestionView{
+	border: 1px solid #e6e6e6;
+	margin-top: 2px;
+	min-height: 150px;
+	height: 250px;
+	overflow: auto;
+	margin-top: 2px;
+	height: 250px;
+	padding: 10px;
+}
+#UserAnswerView{
+	border: 1px solid #e6e6e6;
+	margin-top: 2px;
+	min-height: 150px;
+	height: 250px;
+	overflow: auto;
+	margin-top: 2px;
+	height: 250px;
+	padding: 10px;
+}
+
+
+.affix {
+      top: 0;
+      width: 100%;
+  }
+
+  .affix + .container-fluid {
+      padding-top: 70px;
+  }
+  
+  .row{
+  	margin-top: 20px;
+  }
