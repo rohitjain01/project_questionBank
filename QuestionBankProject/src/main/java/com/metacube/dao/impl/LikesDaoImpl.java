@@ -318,4 +318,27 @@ public class LikesDaoImpl implements LikesDao {
 		}
 	}
 
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Likes> isLikeOrDislike(int questionAnswerId, int userId,
+			boolean onLike, boolean isLike) throws QuestionBankSystemException,
+			QuestionBankException {
+		try {
+			Criteria cr = null;
+			if (session.getCurrentSession() == null) {
+				cr = session.openSession().createCriteria(Likes.class);
+			} else {
+				cr = session.getCurrentSession().createCriteria(Likes.class);
+			}
+			cr.add(Restrictions.eq("questionAnswerId", questionAnswerId));
+			cr.add(Restrictions.eq("userId", UserService.getUser(userId)));
+			cr.add(Restrictions.eq("likeOn", onLike));
+			cr.add(Restrictions.eq("isLike", isLike));
+
+			return cr.list();
+		} catch (HibernateException e) {
+			throw new QuestionBankSystemException(e.getMessage());
+		}
+	}
+
 }

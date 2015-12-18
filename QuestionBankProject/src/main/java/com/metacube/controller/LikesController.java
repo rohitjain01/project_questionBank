@@ -67,7 +67,7 @@ public class LikesController {
 			Map<String, Object> map) throws QuestionBankSystemException,
 			QuestionBankException {
 		List<String> likesList = new ArrayList<String>();
-		map = userService.doSetupForPage(map, "");// do require setup for page
+		userService.doSetupForPage(map, "");// do require setup for page
 		if (questionId == null) {// checking if like is applied on question or
 									// answer
 			map = likesService.liker(userId, 0, questionAnswerId, isLike,
@@ -110,7 +110,7 @@ public class LikesController {
 	public String closeQuestion(@RequestParam("questionId") int questionId,
 			HttpServletRequest request, Map<String, Object> map)
 			throws QuestionBankSystemException, QuestionBankException {
-		map = userService.doSetupForPage(map, "");// do require setup for page
+		userService.doSetupForPage(map, "");// do require setup for page
 		int id = UserAccess.getUserId(request);// take id from session
 		if (id != 1) {
 			map.put("errormessage", "unauthorize access");
@@ -145,7 +145,7 @@ public class LikesController {
 			@RequestParam("answerId") int answerId, HttpServletRequest request,
 			Map<String, Object> map) throws QuestionBankSystemException,
 			QuestionBankException {
-		map = userService.doSetupForPage(map, "");// do require setup for page
+		userService.doSetupForPage(map, "");// do require setup for page
 		int id = UserAccess.getUserId(request);// take id from session
 		if (id != 1) {
 			map.put("errormessage", "unauthorize access");

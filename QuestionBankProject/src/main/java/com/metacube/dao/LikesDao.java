@@ -96,5 +96,17 @@ public interface LikesDao {
 	 * @throws QuestionBankException
 	 */
 	public List<Likes> isLike(int questionAnswerId, int userId, boolean onLike) throws QuestionBankSystemException, QuestionBankException;
+	
+	/**
+	 * 
+	 * @param questionAnswerId
+	 * @param userId
+	 * @param onLike
+	 * @param isLike
+	 * @return
+	 * @throws QuestionBankSystemException
+	 * @throws QuestionBankException
+	 */
+	public List<Likes> isLikeOrDislike(int questionAnswerId, int userId, boolean onLike, boolean isLike) throws QuestionBankSystemException, QuestionBankException;
 
 }

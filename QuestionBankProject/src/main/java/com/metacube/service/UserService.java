@@ -114,7 +114,7 @@ public interface UserService {
 	 * @throws QuestionBankSystemException
 	 * @throws QuestionBankException
 	 */
-	public Map<String, Object> doSetupForPage(Map<String, Object> map,
+	public void  doSetupForPage(Map<String, Object> map,
 			String action) throws QuestionBankSystemException,
 			QuestionBankException;
 

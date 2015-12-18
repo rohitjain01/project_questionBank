@@ -54,7 +54,7 @@
 						<li><a data-toggle="modal" data-target="#loginModal"><span
 								class="glyphicon glyphicon-log-in"></span> Login</a></li>
 					</c:when>
-					<c:otherwise>
+					<c:otherwise>222`
 						<li><a href="profile"><span
 								class="glyphicon glyphicon-user"></span>${user.name}</a></li>
 

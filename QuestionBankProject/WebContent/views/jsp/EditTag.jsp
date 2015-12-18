@@ -34,7 +34,7 @@
 		<div class="row content">
 			<div class="col-lg-1 col-md-1 hidden-sm hidden-xs sidenav text-center"></div>
 			<div class="col-lg-9 col-md-9 col-sm-12 col-xs-12 text-center">
-				<jsp:include page="search.jsp" />
+				<div class="text-danger">${message}</div>
 				<div class="text-left">
 					<form:form action="/QuestionBankProject/edittag.do" method="POST"
 						commandName="questionTag" class="form">

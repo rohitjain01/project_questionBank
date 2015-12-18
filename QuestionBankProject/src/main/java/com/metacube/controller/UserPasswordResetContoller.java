@@ -69,7 +69,7 @@ public class UserPasswordResetContoller {
 	public String doResetForUser(@ModelAttribute("user") @Validated User user,
 			BindingResult result, Map<String, Object> map)
 			throws QuestionBankSystemException, QuestionBankException {
-		map = userService.doSetupForPage(map, "");//setup for page
+		userService.doSetupForPage(map, "");//setup for page
 
 		if (result.hasErrors()) {//if error arrived during validations
 			map.put("user", user);
@@ -97,7 +97,7 @@ public class UserPasswordResetContoller {
 			@RequestParam(value = "password", required = true) String password,
 			Map<String, Object> map) throws QuestionBankSystemException,
 			QuestionBankException {
-		map = userService.doSetupForPage(map, "");//setup for page
+		userService.doSetupForPage(map, "");//setup for page
 		User user = userService.getUser(id);
 		user.setPassword(password);
 		user.setAccountUpdateDate(new Date());

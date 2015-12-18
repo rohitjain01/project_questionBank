@@ -83,7 +83,7 @@ public class AnswerController {
 			@RequestParam("action") String action, Map<String, Object> map,
 			HttpServletRequest request) throws QuestionBankSystemException,
 			QuestionBankException {
-		map = userService.doSetupForPage(map, "");// do require setup for page
+		userService.doSetupForPage(map, "");// do require setup for page
 		int id = UserAccess.getUserId(request);// take id from session
 		if (id == 0) {
 			User userResult = new User();
@@ -106,17 +106,17 @@ public class AnswerController {
 				isError = false;
 			}
 		}
-		map = answerService.postAnswer(answerpost, isError, questionId, name,
+		 answerService.postAnswer(answerpost, isError, questionId, name,
 				email, action, map, id);// call postAuestion method and do other
 										// requirements
-		map = answerService.getDescriptionsAboutQuestionAnswer(questionId, map);// call
+		answerService.getDescriptionsAboutQuestionAnswer(questionId, map);// call
 																				// getDescription
 																				// method
 																				// and
 																				// do
 																				// other
 																				// requirements
-		return "PostAnswers";
+		return "redirect:/question?questionId="+questionId;
 	}
 
 }

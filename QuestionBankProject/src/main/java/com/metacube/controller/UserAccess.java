@@ -72,7 +72,7 @@ public class UserAccess {
 	public String doGet(Map<String, Object> map, HttpServletRequest request,
 			HttpServletResponse response) throws QuestionBankSystemException,
 			QuestionBankException {
-		map = userService.doSetupForPage(map, "");//do setup for page
+	userService.doSetupForPage(map, "");//do setup for page
 		map = userService.doGet(map, request, response); //for google login
 		return (String) map.get("result"); //redirecting specified page
 	}
@@ -91,7 +91,7 @@ public class UserAccess {
 			HttpServletRequest request, HttpServletResponse response)
 			throws QuestionBankSystemException, QuestionBankException {
 
-		map = userService.doSetupForPage(map, ""); //do setup for page
+		userService.doSetupForPage(map, ""); //do setup for page
 		int id = getUserId(request); //get id from session
 		ModelAndView modelAndView = null;
 		if (id == 0) {
@@ -128,7 +128,7 @@ public class UserAccess {
 		data.add(questionTag);
 		data.add(question);
 		data.add(answer);
-		map = userService.doSetupForPage(map, "home");//do setup for page
+		userService.doSetupForPage(map, "");//do setup for page
 		int page = 1;// starting page
 		int numberOfRecordsPerPage = 5;// no of records per page
 		if (request.getParameter("page") != null) { // getting page for
@@ -152,7 +152,7 @@ public class UserAccess {
 	@RequestMapping(value = "/aboutus")
 	public String getAboutUs(Map<String, Object> map, HttpServletRequest request)
 			throws QuestionBankSystemException, QuestionBankException {
-		map = userService.doSetupForPage(map, "");//do setup for page
+		userService.doSetupForPage(map, "");//do setup for page
 		map = setUserToMap(map, request);//do setup of user to map
 		return "AboutUs";//redirecting to about us page
 	}
@@ -170,7 +170,7 @@ public class UserAccess {
 	public String getContactUs(Map<String, Object> map,
 			HttpServletRequest request) throws QuestionBankSystemException,
 			QuestionBankException {
-		map = userService.doSetupForPage(map, "");//do setup for page
+		userService.doSetupForPage(map, "");//do setup for page
 		map = setUserToMap(map, request);//do setup of user to map
 		return "ContactUs"; //redirecting to contact us page
 	}
@@ -187,7 +187,7 @@ public class UserAccess {
 	@RequestMapping(value = "/tour")
 	public String getTour(Map<String, Object> map, HttpServletRequest request)
 			throws QuestionBankSystemException, QuestionBankException {
-		map = userService.doSetupForPage(map, "");//do setup for page
+		userService.doSetupForPage(map, "");//do setup for page
 		map = setUserToMap(map, request);//do setup of user to map
 		return "tour"; //redirecting to tour page
 	}
@@ -207,7 +207,7 @@ public class UserAccess {
 			BindingResult result, Map<String, Object> map,
 			HttpServletRequest request, HttpServletResponse response)
 			throws QuestionBankSystemException, QuestionBankException {
-		map = userService.doSetupForPage(map, ""); //do setup for page
+		userService.doSetupForPage(map, ""); //do setup for page
 		map = userService.getDummyData(map, 1, 5, null); 
 		map = userService.doActionsForLogin(map, request, user);//do actions for loggin
 		return "home";//redirecting to home page
@@ -225,7 +225,7 @@ public class UserAccess {
 	@RequestMapping(value = "/logout")
 	public String logoutUser(Map<String, Object> map, HttpServletRequest request)
 			throws QuestionBankSystemException, QuestionBankException {
-		map = userService.doSetupForPage(map, ""); //do setup for page
+		userService.doSetupForPage(map, ""); //do setup for page
 		map = userService.logoutUser(map, request);//for logging out user
 		map = userService.getDummyData(map, 1, 5, null);
 		return "home";//redirecting to home page

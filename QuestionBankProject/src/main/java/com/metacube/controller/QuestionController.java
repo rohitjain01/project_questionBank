@@ -43,7 +43,7 @@ public class QuestionController {
 	@RequestMapping(value = "/postquestion")
 	public String getPostQuestion(Map<String, Object> map,
 			HttpServletRequest request) throws QuestionBankSystemException, QuestionBankException{
-		map = userService.doSetupForPage(map, ""); // do require setup for page
+		userService.doSetupForPage(map, ""); // do require setup for page
 		int id = UserAccess.getUserId(request); // take id from session
 		if(id==0){
 			User userResult = new User();
@@ -71,7 +71,7 @@ public class QuestionController {
 	public String getEditQuestion(@RequestParam("questionId") int questionId,
 			Map<String, Object> map, HttpServletRequest request) throws QuestionBankSystemException, QuestionBankException{
 
-		map = userService.doSetupForPage(map, ""); // do require setup for page
+		userService.doSetupForPage(map, ""); // do require setup for page
 		int id = UserAccess.getUserId(request);// take id from session
 		if(id==0){
 			User userResult = new User();
@@ -96,7 +96,7 @@ public class QuestionController {
 	public String getQuestion(
 			@RequestParam(value = "questionId", required = true) Integer questionId,
 			Map<String, Object> map, HttpServletRequest request) throws QuestionBankSystemException, QuestionBankException{
-		map = userService.doSetupForPage(map, "");// do require setup for page
+		userService.doSetupForPage(map, "");// do require setup for page
 		int id = UserAccess.getUserId(request);// take id from session
 		if(id==0){
 			User userResult = new User();

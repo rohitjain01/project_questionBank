@@ -76,7 +76,7 @@ public class TagController {
 			map.put("user", user);
 			map.put("role", user.getUserRoleId());
 			if (result.hasErrors()) { // if error arrived during validations
-				map = userService.doSetupForPage(map, "");
+				userService.doSetupForPage(map, "");
 				return "AddTag"; // redirect to add tag
 			}
 			String message = questionTagservice.doActionsTag(questionTag);// calling
@@ -131,7 +131,7 @@ public class TagController {
 			map.put("role", user.getUserRoleId());
 			if (result.hasErrors()) { // if error arrived during validations
 				map.put("tag", questionTag);
-				map = userService.doSetupForPage(map, "");
+				userService.doSetupForPage(map, "");
 				return "EditTag"; // redirecting to edit tag if error arrived
 			}
 			map = questionTagservice.doEditTagAction(id, questionTag, map);// calling

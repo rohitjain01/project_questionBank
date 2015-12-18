@@ -70,10 +70,10 @@ public class UserController {
 	public String doActions(@ModelAttribute("user") @Validated User user,
 			BindingResult result, Map<String, Object> map)
 			throws QuestionBankSystemException, QuestionBankException {
-		map = userService.doSetupForPage(map, "");//setup for page
+		userService.doSetupForPage(map, "");//setup for page
 		if (result.hasErrors()) { //if error arrived during validations
 			map.put("user", user);
-			map.put("message", "Error in Sign Up");
+			map.put("errormessage", "Error in Sign Up");
 			return "home";// if request is unauthorized than redirect it to home page
 		}
 		try {
@@ -106,7 +106,7 @@ public class UserController {
 			Map<String, Object> map, HttpServletRequest request,
 			HttpServletResponse response) throws QuestionBankSystemException,
 			QuestionBankException {
-		map = userService.doSetupForPage(map, "");//setup for page
+		userService.doSetupForPage(map, "");//setup for page
 
 		ModelAndView modelAndView = userService.addUser(name, emailId,
 				password, map, request);//adding user during signup

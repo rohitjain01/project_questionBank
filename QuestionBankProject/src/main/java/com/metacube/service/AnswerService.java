@@ -81,7 +81,7 @@ public interface AnswerService {
 	 * @throws QuestionBankSystemException: handle all system related exceptions
 	 * @throws QuestionBankException: handle all runtime exceptions
 	 */
-	public Map<String, Object> postAnswer(Answer answer, boolean isError,
+	public void postAnswer(Answer answer, boolean isError,
 			int questionId, String name, String email, String action,
 			Map<String, Object> map, int id) throws QuestionBankSystemException, QuestionBankException;
 	
@@ -92,6 +92,6 @@ public interface AnswerService {
 	 * @throws QuestionBankSystemException: handle all system related exceptions
 	 * @throws QuestionBankException: handle all runtime exceptions
 	 */
-	public Map<String, Object> getDescriptionsAboutQuestionAnswer(int questionId, Map<String, Object> map) throws QuestionBankSystemException, QuestionBankException;
+	public void getDescriptionsAboutQuestionAnswer(int questionId, Map<String, Object> map) throws QuestionBankSystemException, QuestionBankException;
 
 }

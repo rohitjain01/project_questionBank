@@ -72,7 +72,7 @@ public class UserProfileUpdateController {
 			Map<String, Object> map, HttpServletRequest request)
 			throws QuestionBankSystemException, QuestionBankException {
 
-		map = userService.doSetupForPage(map, "");//setup for page
+		userService.doSetupForPage(map, "");//setup for page
 		int id = UserAccess.getUserId(request);//getting id from session
 		if (id != user.getUserId()) {
 			User userResult = new User();
@@ -89,7 +89,7 @@ public class UserProfileUpdateController {
 					name, action, map);
 		}
 		if (action.toLowerCase().equals("update,delete")) {//for deleting user
-			map = userService.doSetupForPage(map, "");
+			userService.doSetupForPage(map, "");
 			map = userService.logoutUser(map, request);
 			return "home";// if request is unauthorized than redirect it to home page
 		}

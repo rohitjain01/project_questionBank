@@ -75,7 +75,7 @@ public class TagViewController {
 	public String editTagForm(@PathVariable("tagId") int tagId, Model model,
 			Map<String, Object> map, HttpServletRequest request)
 			throws QuestionBankSystemException, QuestionBankException {
-		map = userService.doSetupForPage(map, "");//do require setup for page
+		userService.doSetupForPage(map, "");//do require setup for page
 		map.put("questionTag", new QuestionTag());
 		int id = UserAccess.getUserId(request);//take Id from session
 		if (id == 0) {

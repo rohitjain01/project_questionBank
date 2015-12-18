@@ -70,7 +70,7 @@ public class PostQuestionController extends HttpServlet {
 	@RequestMapping(value="/PostQuestion", method=RequestMethod.POST)
 	public String doActions(@ModelAttribute("postQuestion") @Validated Question postQuestion, BindingResult result, @RequestParam("selectedTags") String questionTag, @RequestParam("action") String action, @RequestParam(value="questionId", required=false) Integer questionId, Map<String, Object> map, HttpServletRequest request) throws QuestionBankSystemException, QuestionBankException{
 		
-		map=userService.doSetupForPage(map,"");// do require setup for page
+		userService.doSetupForPage(map,"");// do require setup for page
 		int id = UserAccess.getUserId(request);// take id from session
 		if(id==0){
 			User userResult = new User();

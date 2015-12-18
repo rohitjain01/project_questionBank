@@ -38,6 +38,7 @@
 	</form>
 </div>
 <div class="text-center">
-	<p>${message}</p>
-	<p>${errormessage}</p>
+	<p><strong>${message}</strong></p>
+	
+	<p><strong>${errormessage}</strong></p>
 </div>

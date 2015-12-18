@@ -271,6 +271,12 @@ public class LikesServiceImpl implements LikesService {
 
 			add(likes);//adding like to database
 
+		} else if(isLikeOrDislike(questionAnswerId, userId, onLike, isLike).size() == 0) {
+			Likes likes = isLikeOrDislike(questionAnswerId, userId, onLike, !isLike).get(0);
+			likes.setLike(isLike);
+			likes.setLikeOn(onLike);
+			
+			edit(likes);
 		}
 		int questionId2 = 0;
 		if (onLike) {//for answer like to apply
@@ -337,6 +343,13 @@ public class LikesServiceImpl implements LikesService {
 		answerService.edit(answer);//editing answer
 		map.put("return", "redirect:question?questionId=" + questionId);
 		return map;
+	}
+
+	@Transactional
+	public List<Likes> isLikeOrDislike(int questionAnswerId, int userId,
+			boolean onLike, boolean isLike) throws QuestionBankSystemException,
+			QuestionBankException {
+		return likesDao.isLikeOrDislike(questionAnswerId, userId, onLike, isLike);
 	}
 
 }

@@ -54,7 +54,7 @@ public class SearchController {
 			@RequestParam(value = "relatedTag", required = false) String relatedTag,
 			Map<String, Object> map, HttpServletRequest request)
 			throws QuestionBankSystemException, QuestionBankException {
-		map = userService.doSetupForPage(map, "search");// do require setup for
+		userService.doSetupForPage(map, "search");// do require setup for
 														// page
 
 		int id = UserAccess.getUserId(request);// take id from session
@@ -98,7 +98,7 @@ public class SearchController {
 			@RequestParam(value = "search", required = true) String search,
 			Map<String, Object> map, HttpServletRequest request)
 			throws QuestionBankSystemException, QuestionBankException {
-		map = userService.doSetupForPage(map, "");// do require setup for page
+		userService.doSetupForPage(map, "");// do require setup for page
 
 		int id = UserAccess.getUserId(request);// take id from session
 		if (id == 0) {

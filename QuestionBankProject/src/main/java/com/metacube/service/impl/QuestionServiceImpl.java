@@ -16,6 +16,8 @@ import java.util.TreeMap;
 
 
 
+
+import org.apache.commons.lang.StringEscapeUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -282,7 +284,7 @@ public class QuestionServiceImpl implements QuestionService {
 		String tagError = null;
 		map.put("user", userService.getUser(id));
 		questionTagValues = questionTag.trim().split(",");
-		if (result.hasErrors() || questionTag.trim().isEmpty()) {
+		if (result != null && (result.hasErrors() || questionTag.trim().isEmpty())) {
 			map.put("postQuestion", postQuestion);
 
 			map.put("message", "Error in Question Post");
@@ -304,7 +306,8 @@ public class QuestionServiceImpl implements QuestionService {
 
 		switch (action.toLowerCase()) {
 		case "post":
-
+			postQuestion.setQuestionTitle(StringEscapeUtils.escapeHtml(postQuestion.getQuestionTitle()));
+			postQuestion.setQuestionDescription(StringEscapeUtils.escapeHtml(postQuestion.getQuestionDescription()));
 			postQuestion.setPostedTime(new Date());
 			postQuestion.setUpdatedTime(new Date());
 			postQuestion.setUserId(userService.getUser(id));
@@ -312,7 +315,7 @@ public class QuestionServiceImpl implements QuestionService {
 			Set<QuestionTag> set = postQuestion.getTags();
 			for (String tagName : questionTagValues) {
 				set.add(questionTagService.getTagFromName(tagName));
-				System.out.println("fjgbkjhkjhdfgjhhhhhhhhhhhhhhhhhhhhhhhhhhjkffffhhhhhhhhhhhhhhhhhhhhhhh");
+			
 			}
 			add(postQuestion);
 			questionId = getLastQuestion(userService.getUser(id)).getQuestionId();
@@ -320,8 +323,8 @@ public class QuestionServiceImpl implements QuestionService {
 		case "edit":
 			Question question2 = getQuestion(questionId);
 			question2.setUpdatedTime(new Date());
-			question2.setQuestionTitle(postQuestion.getQuestionTitle());
-			question2.setQuestionDescription(postQuestion.getQuestionDescription());
+			question2.setQuestionTitle(StringEscapeUtils.escapeHtml(postQuestion.getQuestionTitle()));
+			question2.setQuestionDescription(StringEscapeUtils.escapeHtml(postQuestion.getQuestionDescription()));
 			Set<QuestionTag> set2 = postQuestion.getTags();
 			for (String tagName : questionTagValues) {
 				set2.add(questionTagService.getTagFromName(tagName));
@@ -331,7 +334,7 @@ public class QuestionServiceImpl implements QuestionService {
 		}
 		
 		map = getQuestion(questionId, map, 1);
-		map.put("return", "PostAnswers");
+		map.put("return", "redirect:question?questionId="+questionId);
 		return map;
 
 	}

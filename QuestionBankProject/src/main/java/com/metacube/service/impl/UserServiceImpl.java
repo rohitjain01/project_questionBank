@@ -175,7 +175,7 @@ public class UserServiceImpl implements UserService {
 	 * @see com.metacube.service.UserService#doSetupForPage(java.util.Map, java.lang.String)
 	 */
 	@Transactional
-	public Map<String, Object> doSetupForPage(Map<String, Object> map,
+	public void doSetupForPage(Map<String, Object> map,
 			String action) throws QuestionBankSystemException,
 			QuestionBankException {
 		map.put("question", new Question());
@@ -187,7 +187,7 @@ public class UserServiceImpl implements UserService {
 			map.put("action", 1);
 			map.put("searchQuestions", questionService.getAllQuestion());
 		}
-		return map;
+		return;
 	}
 
 	/* (non-Javadoc)
@@ -211,7 +211,7 @@ public class UserServiceImpl implements UserService {
 			}
 		} else {
 			map.put("message",
-					"Error in LogIn, EmailId And Password Are not valid");
+					"Error in LogIn, Email Id and password are not valid");
 		}
 		return map;
 	}
@@ -522,7 +522,7 @@ public class UserServiceImpl implements UserService {
 		File file;
 		try {
 			file = new File(
-					"C:\\Users\\Sumitra.SUMITRA-KUMARI\\Desktop\\QuestionBankProject\\WebContent\\images/"
+					"E:\\FinalProject\\QuestionBankProject\\WebContent\\images/"
 							+ filename);
 
 			FileUtils.writeByteArrayToFile(file, image.getBytes());
@@ -570,6 +570,7 @@ public class UserServiceImpl implements UserService {
 		if (newUser == null) {
 			// sending message
 			mailSender.send(message);
+			map.put("message", "Registration email sent to "+user.getEmailId()+". Open this email to confirm signup.");
 		} else {
 			if (!newUser.isUserActive()) {
 				// sending message
@@ -578,7 +579,7 @@ public class UserServiceImpl implements UserService {
 				map.put("message", "Error in sign up, Emailid already exist");
 			}
 		}
-		map = doSetupForPage(map, "");
+		doSetupForPage(map, "");
 		return map;
 	}
 
@@ -645,7 +646,9 @@ public class UserServiceImpl implements UserService {
 				+ user.getUserId() + "&password=" + user.getPassword());
 		// sending message
 		mailSender.send(message);
+		map.put("message", "Reset password link sent to "+getUser(user.getUserId()).getEmailId()+". Open this email to reset your password.");
 		map.put("user", getUser(user.getUserId()));
+		map = getUserForProfile(user, map);
 		return map;
 	}
 

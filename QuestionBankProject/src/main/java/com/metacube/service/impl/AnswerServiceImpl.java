@@ -8,6 +8,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.commons.lang.StringEscapeUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -197,7 +198,7 @@ public class AnswerServiceImpl implements AnswerService {
 	 * @throws QuestionBankException: handle all runtime exceptions
 	 */
 	@Transactional
-	public Map<String, Object> postAnswer(Answer answerpost, boolean isError,
+	public void postAnswer(Answer answerpost, boolean isError,
 			int questionId, String name, String email, String action,
 			Map<String, Object> map, int id) throws QuestionBankSystemException, QuestionBankException {
 		Question question = questionService.getQuestion(questionId);//grtting qiuestion from id
@@ -221,8 +222,8 @@ public class AnswerServiceImpl implements AnswerService {
 							userService.add(user);
 						}
 						user = userService.ifNormalUserExist(user);
-						Answer newAnswer = new Answer();//setting answers
-						newAnswer.setDescription(answerpost.getDescription());
+						Answer newAnswer = new Answer();//setting answers 
+						newAnswer.setDescription(StringEscapeUtils.escapeHtml(answerpost.getDescription()));
 						newAnswer.setPostedTime(new Date());
 						newAnswer.setQuestionId(question);
 						newAnswer.setUserId(user);
@@ -234,7 +235,7 @@ public class AnswerServiceImpl implements AnswerService {
 				case "post answer": //posting answer a normal guest
 					user = userService.getUser(id);
 					Answer answer1 = new Answer();
-					answer1.setDescription(answerpost.getDescription());
+					answer1.setDescription(StringEscapeUtils.escapeHtml(answerpost.getDescription()));
 					answer1.setPostedTime(new Date());
 					answer1.setQuestionId(question);
 					answer1.setUserId(user);
@@ -246,7 +247,7 @@ public class AnswerServiceImpl implements AnswerService {
 		}
 		
 		
-		return map;
+		return;
 	}
 	
 	/* (non-Javadoc)
@@ -265,7 +266,7 @@ public class AnswerServiceImpl implements AnswerService {
 	 * @throws QuestionBankException: handle all runtime exceptions
 	 */
 	@Transactional
-	public Map<String, Object> getDescriptionsAboutQuestionAnswer(int questionId, Map<String, Object> map) throws QuestionBankSystemException, QuestionBankException {
+	public void getDescriptionsAboutQuestionAnswer(int questionId, Map<String, Object> map) throws QuestionBankSystemException, QuestionBankException {
 		Question question = questionService.getQuestion(questionId);//getting question from id
 		List<Answer> answerList = getAnswersbyQuestionId(question);//getting answer list related to description
 		map.put("answerList", answerList);
@@ -286,7 +287,7 @@ public class AnswerServiceImpl implements AnswerService {
 		map.put("likes", likeOnQuestion);
 		map.put("dislike", dislikeOnQuestion);
 		map.put("noOfViews", question.getNoOfViews());
-		return map;
+		return;
 	}
 
 }

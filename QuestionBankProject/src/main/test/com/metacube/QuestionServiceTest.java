@@ -197,7 +197,7 @@ public class QuestionServiceTest {
 	Question question = (Question) map.get("postQuestion");
 	assertThat(question ,instanceOf(Question.class));
 	String result = (String) map.get("val");
-	String expected="[\"java,\",\"spring,\",\"JQuery,\",\"MySql,\",\"HTML,\"]";
+	String expected="[\"Java,\",\"Spring,\",\"JQuery,\",\"MySQL,\",\"HTML,\"]";
 	assertEquals(result ,expected);
 	}
 	
@@ -206,7 +206,7 @@ public class QuestionServiceTest {
 	public void testGetPostQuestion() throws QuestionBankSystemException, QuestionBankException{
 		questionService.getPostQuestion(map);
 		String result = (String) map.get("val");
-		String expected="[\"java,\",\"spring,\",\"JQuery,\",\"MySql,\",\"HTML,\"]";
+		String expected="[\"Java,\",\"Spring,\",\"JQuery,\",\"MySQL,\",\"HTML,\"]";
 		assertEquals(result,expected); 
 	}
 	
@@ -223,7 +223,7 @@ public class QuestionServiceTest {
 		int questionId = 0;
 		int id = 1;
 		questionService.doActions(postQuestion, result, questionTag, action, questionId, map, id);
-		assertEquals((String)map.get("return"),"PostAnswers");
+		assertEquals((String)map.get("return"),"redirect:question?questionId=6");
 	}
 	
 }

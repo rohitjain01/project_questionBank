@@ -258,9 +258,13 @@ public class QuestionTagServiceImpl implements QuestionTagService {
 			QuestionTag questionTag, Map<String, Object> map) throws QuestionBankSystemException, QuestionBankException{
 		
 		QuestionTag tag = getTagById(questionTag.getTagId());
-		tag.setTagName(questionTag.getTagName());
-		tag.setTagDesciption(questionTag.getTagDesciption());
-		edit(tag);
+		if(tag.getTagName().equalsIgnoreCase(questionTag.getTagName())) {
+			tag.setTagName(questionTag.getTagName());
+			tag.setTagDesciption(questionTag.getTagDesciption());
+			edit(tag);
+		} else {
+			map.put("message", "Tag name can't be changed");
+		}
 		QuestionTag Tag = new QuestionTag();
 		map.put("questionTag", Tag);
 		map.put("role", userService.getUser(userId).getUserRoleId());

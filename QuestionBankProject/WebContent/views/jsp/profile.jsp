@@ -167,6 +167,7 @@
 		<div class="row content">
 			<div class=" col-lg-1 col-md-1 hidden-sm hidden-xs sidenav"></div>
 			<div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
+				<div class="text-success">${message}</div>
 				<div class="text-left col-lg-8 col-md-8 col-sm-8 col-xs-12">
 					<h3>My Profile</h3>
 
